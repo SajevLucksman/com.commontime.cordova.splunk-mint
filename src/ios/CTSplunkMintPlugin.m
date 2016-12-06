@@ -116,13 +116,6 @@
             while((key = [enumerator nextObject])) {
                 [limitedExtraData setValue:[splunkErrorObject objectForKey:key] forKey:key];
             }
-            
-            NSDate *currentDate = [NSDate date];
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"dd.MM.YY HH:mm:ss"];
-            NSString *dateString = [dateFormatter stringFromDate:currentDate];
-            
-            [limitedExtraData setValue:dateString forKey:@"timeStamp"];
 
             [[Mint sharedInstance] logEventWithName: errorMessage logLevel:ErrorLogLevel extraData:limitedExtraData ];
             //[[Mint sharedInstance] logEventWithName: name];
